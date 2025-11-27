@@ -37,6 +37,13 @@ app.use("/admin", middleware, admin, adminRoutes);
 const changePassword = require("./auth/changePassword");
 app.use("/auth/change-password", middleware, changePassword);
 
+const logout = require("./auth/logout");
+app.use("/auth/logout", middleware, logout);
+
+const welcome = require("./routes/welcome");
+app.use("/welcome", middleware, welcome);
+
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
