@@ -1,6 +1,12 @@
 
 const express = require("express");
-const cors = require("cors");
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+   "https://coplur-role-based-auth-app-4zug.vercel.app"
+  ],
+  credentials: true
+}));
 require("dotenv").config();
 
 const app = express();

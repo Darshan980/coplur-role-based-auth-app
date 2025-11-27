@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: window.location.hostname === "localhost" 
+    ? "http://localhost:5000/api" 
+    : "https://coplur-role-based-auth-app.onrender.com/api",
 });
 
 // Automatically attach token
