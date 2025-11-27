@@ -15,6 +15,10 @@ app.get("/", (req, res) => {
 
 const connectDB = require("./config/db");
 connectDB();
+const seedAdmin = require("./utils/seedAdmin");
+connectDB().then(() => {
+  seedAdmin();
+});
 
 const User = require("./UserModel");
 
@@ -23,6 +27,9 @@ const signin = require("./auth/signin");
 
 const middleware = require("./middleware/auth");
 const admin = require("./middleware/admin");
+
+const adminRoutes = require("./admin/adminRoutes");
+app.use("/admin", middleware, admin, adminRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
