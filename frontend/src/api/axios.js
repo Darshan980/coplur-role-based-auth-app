@@ -2,8 +2,8 @@ import axios from "axios";
 
 const API = axios.create({
   baseURL: window.location.hostname === "localhost" 
-    ? "http://localhost:5000/api/auth" 
-    : "https://coplur-role-based-auth-app.onrender.com/api/auth",
+    ? "http://localhost:5000/api" 
+    : "https://coplur-role-based-auth-app.onrender.com/api",
 });
 
 API.interceptors.request.use((config) => {
