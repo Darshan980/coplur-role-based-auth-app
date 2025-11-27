@@ -40,7 +40,7 @@ app.use("/auth/change-password", middleware, changePassword);
 const logout = require("./auth/logout");
 app.use("/auth/logout", middleware, logout);
 
-const welcome = require("./routes/welcome");
+const welcome = require("./Welcome");
 app.use("/welcome", middleware, welcome);
 
 
