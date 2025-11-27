@@ -19,3 +19,4 @@ app.listen(PORT, () => {
 const connectDB = require("./config/db");
 connectDB();
 
+const User = require("./UserModel");
