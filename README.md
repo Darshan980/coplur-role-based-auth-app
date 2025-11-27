@@ -128,7 +128,7 @@ PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
 ADMIN_EMAIL=admin@example.com
-ADMIN_PASSWORD=admin123
+ADMIN_PASSWORD=Admin@12345
 ```
 
 4. Start the backend server:
@@ -149,7 +149,7 @@ cd frontend
 
 2. Install dependencies:
 ```bash
-npm install react react-dom react-router-dom axios
+npm install 
 ```
 
 3. Create or update `src/api/axios.js`:
@@ -223,5 +223,6 @@ The application automatically seeds an admin account on first run:
 | JWT_SECRET | Secret key for JWT | your_secret_key_here |
 | ADMIN_EMAIL | Default admin email | admin@example.com |
 | ADMIN_PASSWORD | Default admin password | admin123 |
+
 
 
