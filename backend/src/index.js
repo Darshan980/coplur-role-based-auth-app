@@ -14,7 +14,6 @@ app.get("/", (req, res) => {
 
 
 const connectDB = require("./config/db");
-connectDB();
 const seedAdmin = require("./config/seedAdmin");
 connectDB().then(() => {
   seedAdmin();
@@ -22,26 +21,27 @@ connectDB().then(() => {
 
 const User = require("./UserModel");
 
+
 const register = require("./auth/register");
-app.use("/auth/register", register);
+app.use("/api/auth/register", register);
 
 const signin = require("./auth/signin");
-app.use("/auth/signin", signin);
+app.use("/api/auth/signin", signin);
 
 const middleware = require("./middleware/auth");
 const admin = require("./middleware/admin");
 
 const adminRoutes = require("./admin/adminRoutes");
-app.use("/admin", middleware, admin, adminRoutes);
+app.use("/api/admin", middleware, admin, adminRoutes);
 
 const changePassword = require("./auth/changePassword");
-app.use("/auth/change-password", middleware, changePassword);
+app.use("/api/auth/change-password", middleware, changePassword);
 
 const logout = require("./auth/logout");
-app.use("/auth/logout", middleware, logout);
+app.use("/api/auth/logout", middleware, logout);
 
 const welcome = require("./Welcome");
-app.use("/welcome", middleware, welcome);
+app.use("/api/welcome", middleware, welcome);
 
 
 const PORT = process.env.PORT || 5000;

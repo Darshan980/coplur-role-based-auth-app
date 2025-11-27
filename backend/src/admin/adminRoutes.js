@@ -5,7 +5,7 @@ const User = require("../UserModel");
 const router = express.Router();
 
 
-router.get("/", async (req, res) => {
+router.get("/users", async (req, res) => {
   try {
     const users = await User.find().select("-password");
     res.json(users);
@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 
 
 
-router.post("/", async (req, res) => {
+router.post("/users", async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
 
@@ -47,7 +47,7 @@ router.post("/", async (req, res) => {
 
 
 
-router.delete("/:id", async (req, res) => {
+router.delete("/users/:id", async (req, res) => {
   try {
     await User.findByIdAndDelete(req.params.id);
     res.json({ message: "User deleted" });

@@ -1,4 +1,3 @@
-
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -29,8 +28,16 @@ router.post("/", async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
-
-    return res.status(200).json({ message: "Login success", token });
+    return res.status(200).json({ 
+      message: "Login success", 
+      token,
+      user: {
+        id: user._id,
+        email: user.email,
+        name: user.name,
+        role: user.role
+      }
+    });
 
   } catch (err) {
     return res.status(500).json({ message: "Server error", error: err.message });
