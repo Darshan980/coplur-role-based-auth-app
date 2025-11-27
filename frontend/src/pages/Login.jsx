@@ -7,6 +7,7 @@ import "./Login.css";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginAs, setLoginAs] = useState("student"); 
 
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -19,7 +20,12 @@ export default function Login() {
         email,
         password
       });
-      
+
+      if (res.data.user.role !== loginAs) {
+        alert(`This account is registered as ${res.data.user.role}, not ${loginAs}`);
+        return;
+      }
+
       login(res.data.user, res.data.token);
 
       if (res.data.user.role === "admin") {
@@ -39,6 +45,15 @@ export default function Login() {
 
       <form onSubmit={handleSubmit} className="login-form">
         
+        <select
+          value={loginAs}
+          onChange={(e) => setLoginAs(e.target.value)}
+          className="role-select"
+        >
+          <option value="student">Login as Student</option>
+          <option value="admin">Login as Admin</option>
+        </select>
+
         <input 
           type="email"
           placeholder="Email"
