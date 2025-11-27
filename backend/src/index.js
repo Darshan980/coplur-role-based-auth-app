@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 
 const connectDB = require("./config/db");
 connectDB();
-const seedAdmin = require("./utils/seedAdmin");
+const seedAdmin = require("./config/seedAdmin");
 connectDB().then(() => {
   seedAdmin();
 });
