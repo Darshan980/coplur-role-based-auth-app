@@ -20,3 +20,6 @@ const connectDB = require("./config/db");
 connectDB();
 
 const User = require("./UserModel");
+
+const register = require("./auth/register");
+const signin = require("./auth/signin");
