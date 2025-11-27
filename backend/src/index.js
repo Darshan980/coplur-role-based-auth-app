@@ -23,13 +23,19 @@ connectDB().then(() => {
 const User = require("./UserModel");
 
 const register = require("./auth/register");
+app.use("/auth/register", register);
+
 const signin = require("./auth/signin");
+app.use("/auth/signin", signin);
 
 const middleware = require("./middleware/auth");
 const admin = require("./middleware/admin");
 
 const adminRoutes = require("./admin/adminRoutes");
 app.use("/admin", middleware, admin, adminRoutes);
+
+const changePassword = require("./auth/changePassword");
+app.use("/auth/change-password", middleware, changePassword);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
