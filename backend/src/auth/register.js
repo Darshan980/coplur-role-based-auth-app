@@ -1,7 +1,7 @@
-// routes/register.js
+
 const express = require("express");
 const bcrypt = require("bcrypt");
-const User = require("../models/User");
+const User = require("../UserModel");
 
 const router = express.Router();
 
@@ -10,12 +10,15 @@ router.post("/", async (req, res) => {
 
   try {
     if (!name || !email || !password) {
-      return res.json({ message: "All fields required" });
+      return res.status(400).json({ message: "All fields required" });
+    }
+    if (password.length < 6) {
+      return res.status(400).json({ message: "Password must be at least 6 characters" });
     }
 
     const userExists = await User.findOne({ email });
     if (userExists) {
-      return res.json({ message: "User already exists" });
+      return res.status(409).json({ message: "User already exists" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -26,9 +29,9 @@ router.post("/", async (req, res) => {
       password: hashedPassword,
     });
 
-    return res.json({ message: "Registered successfully" });
+    return res.status(201).json({ message: "Registered successfully" });
   } catch (error) {
-    return res.json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 });
 
