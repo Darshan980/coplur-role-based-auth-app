@@ -1,8 +1,10 @@
 # Role-Based Authentication System
 
 A full-stack web application with role-based access control (RBAC) featuring separate admin and student portals with authentication and user management.
-Live Demo
-🔗 https://coplur-role-based-auth-app-4zug.vercel.app/
+
+## Live Demo
+[Click here to view live app](https://coplur-role-based-auth-app-4zug.vercel.app/)
+
 ## Features
 
 ### Authentication
@@ -221,4 +223,5 @@ The application automatically seeds an admin account on first run:
 | JWT_SECRET | Secret key for JWT | your_secret_key_here |
 | ADMIN_EMAIL | Default admin email | admin@example.com |
 | ADMIN_PASSWORD | Default admin password | admin123 |
+
 
