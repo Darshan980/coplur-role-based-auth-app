@@ -222,7 +222,8 @@ The application automatically seeds an admin account on first run:
 | MONGO_URI | MongoDB connection string | mongodb://localhost:27017/roleapp |
 | JWT_SECRET | Secret key for JWT | your_secret_key_here |
 | ADMIN_EMAIL | Default admin email | admin@example.com |
-| ADMIN_PASSWORD | Default admin password | admin123 |
+| ADMIN_PASSWORD | Default admin password | Admin@12345 |
+
 
 
 
